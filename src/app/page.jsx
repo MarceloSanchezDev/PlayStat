@@ -17,7 +17,7 @@ export default function Home() {
           className="mb-6 drop-shadow-lg rounded"
         />
 
-        <h1 className="text-4xl md:text-6xl font-bold max-w-2xl leading-tight mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold max-w-4xl leading-tight mb-4">
           Guarda tus <span className="text-sky-600">estadísticas</span> de
           lanzamientos de campo con{" "}
           <span className="text-orange-500">PlayStat</span>
