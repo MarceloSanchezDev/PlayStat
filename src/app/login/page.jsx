@@ -1,9 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import FormComponent from "../components/form/FormComponent";
+import ButtomForm from "../components/buttom/ButtomForm";
+import TitleFom from "../components/form/components/TitleFom";
+import InputForm from "../components/form/components/InputForm";
+import LabelForm from "../components/form/components/LabelForm";
+import SectionForm from "../components/form/components/SectionForm";
+import MainComponent from "../components/mainComponent";
+import { useUser } from "../context/UserContext";
 
 export default function LoginPage() {
+  const { login } = useUser();
   const router = useRouter();
 
   const [formdata, setFormData] = useState({ username: "", password: "" });
@@ -38,7 +48,7 @@ export default function LoginPage() {
 
     setError("");
     setMsg("");
-
+    login();
     if (!formdata.username.trim()) {
       setError("El nombre de usuario no debe estar vacío");
       return;
@@ -77,90 +87,71 @@ export default function LoginPage() {
     }
   };
 
-  const styleInput = "w-100 h-10 p-3 border rounded";
-  const styleLabel = "w-100 flex flex-wrap gap-2 ";
-
   return (
-    <main className="flex flex-col justify-center items-center content-center wh-100 mt-10 p-5">
-      <h1 className="text-center mb-3">Login</h1>
-      <p className="text-center">
-        Inicia sesión para poder acceder a tus datos
-      </p>
+    <MainComponent>
+      <SectionForm>
+        <TitleFom title={"Login"} />
+        <p className="text-center font-bold">
+          Inicia sesión para poder acceder a tus datos
+        </p>
 
-      <form
-        className="flex flex-col flex-wrap justify-center content-center gap-4 m-5 border rounded p-10"
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="username" className={styleLabel}>
-          nombre de usuario:
-          <input
-            onChange={(e) =>
-              setFormData({ ...formdata, username: e.target.value })
-            }
-            id="username"
-            type="text"
-            placeholder="nombre de usuario"
-            className={styleInput}
-            autoComplete="username"
-          />
-        </label>
-
-        <label htmlFor="password" className={styleLabel}>
-          contraseña :
-          <input
-            onChange={(e) =>
-              setFormData({ ...formdata, password: e.target.value })
-            }
-            id="password"
-            type="password"
-            placeholder="contraseña"
-            className={styleInput}
-            autoComplete="current-password"
-          />
-        </label>
-
-        {error && (
-          <div className="flex justify-center content-center">
-            <span className="w-100 text-center text-red-600">{error}</span>
-          </div>
-        )}
-
-        {msg && (
-          <span className="transition delay-150 w-100 text-center text-green-600">
-            {msg}
-          </span>
-        )}
-
-        <button
-          type="submit"
-          className="border rounded-sm p-2 hover:bg-sky-700 flex justify-center content-center disabled:opacity-50"
-          disabled={loading}
+        <FormComponent
+          className="flex flex-col flex-wrap justify-center content-center gap-4  p-10"
+          handleSubmit={handleSubmit}
         >
-          {loading && (
-            <svg
-              className="mr-3 -ml-1 size-5 animate-spin text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              />
-            </svg>
+          <LabelForm htmlFor="username" title={"Nombre de Usuario :"}>
+            <InputForm
+              onChange={(e) =>
+                setFormData({ ...formdata, username: e.target.value })
+              }
+              id="username"
+              type="text"
+              placeholder="nombre de usuario"
+            />
+          </LabelForm>
+
+          <LabelForm htmlFor="password" title={"Contraseña :"}>
+            <InputForm
+              onChange={(e) =>
+                setFormData({ ...formdata, password: e.target.value })
+              }
+              id="password"
+              type="password"
+              placeholder="contraseña"
+            />
+          </LabelForm>
+
+          {error && (
+            <div className="flex justify-center content-center">
+              <span className="w-100 text-center text-red-600 font-bold">
+                {error}
+              </span>
+            </div>
           )}
-          Iniciar sesión
-        </button>
-      </form>
-    </main>
+
+          {msg && (
+            <span className="transition delay-150 w-100 text-center text-green-600 font-bold">
+              {msg}
+            </span>
+          )}
+          <fieldset className="flex gap-2">
+            <input type="checkbox" name="record" id="record" />
+            <label htmlFor="record">Recordame</label>
+          </fieldset>
+          <ButtomForm title={"Iniciar Sesion"} loading={loading} />
+          <Link href="/forgotPassword">Olvide mi contraseña</Link>
+        </FormComponent>
+      </SectionForm>
+      <p className="mt-5">
+        Si no tienes una cuenta todavia,
+        <Link
+          href="/register"
+          className="text-red-600 font-bold sectionAnimated"
+        >
+          {" "}
+          Registrate.
+        </Link>
+      </p>
+    </MainComponent>
   );
 }

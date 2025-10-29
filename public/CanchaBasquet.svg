@@ -1,0 +1,17 @@
+<svg width="4445" height="4149" viewBox="0 0 4445 4149" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="4445" height="4149" fill="#E5E5E5"/>
+<rect opacity="0.5" x="4444.5" y="3.5" width="4142" height="4444" transform="rotate(90 4444.5 3.5)" fill="#D5AB7D" stroke="black"/>
+<ellipse cx="2227" cy="3570" rx="576" ry="568" transform="rotate(90 2227 3570)" fill="#D9D9D9" fill-opacity="0.5" stroke="black" stroke-width="5"/>
+<path d="M2783.5 1606C2783.5 1922.77 2530.28 2179.5 2218 2179.5C1905.72 2179.5 1652.5 1922.77 1652.5 1606C1652.5 1289.23 1905.72 1032.5 2218 1032.5C2530.28 1032.5 2783.5 1289.23 2783.5 1606Z" fill="#D9D9D9" fill-opacity="0.5" stroke="black" stroke-width="5"/>
+<ellipse cx="2218" cy="466" rx="163" ry="160" transform="rotate(90 2218 466)" fill="black"/>
+<ellipse cx="2218" cy="466" rx="118" ry="120" transform="rotate(90 2218 466)" fill="#B1A292"/>
+<path d="M3931.5 2.5H505L512.5 736.5L556 1011.5L613.5 1208.5L686 1374.5L780 1535.5L907.5 1713.5L1054.5 1867.5L1214 1997L1391 2107L1581.5 2195L1777.5 2260.5L2027.5 2309.5L2277 2322.5L2473 2302L2666 2260.5L2862 2196.5L3045.5 2107L3221 2002.5L3379 1867.5L3525 1720.5L3657.5 1544L3752 1386.5L3833 1208L3891 1016L3931.5 819.5V2.5Z" stroke="black" stroke-width="5"/>
+<line x1="1638.5" y1="2.97203" x2="1656.5" y2="1611.97" stroke="black" stroke-width="5"/>
+<line x1="2805.5" y1="3.02641" x2="2788.5" y2="1612.03" stroke="black" stroke-width="5"/>
+<line x1="1654" y1="1609.5" x2="2790" y2="1609.5" stroke="black" stroke-width="5"/>
+<line x1="1961.99" y1="214.5" x2="2468.99" y2="211.5" stroke="black" stroke-width="5"/>
+<line x1="2246.5" y1="217" x2="2246.5" y2="324" stroke="black"/>
+<line x1="2181.5" y1="217" x2="2181.5" y2="324" stroke="black"/>
+<line x1="4445" y1="3572.5" y2="3572.5" stroke="black" stroke-width="5"/>
+<line x1="4445" y1="5.5" x2="3" y2="5.5" stroke="black" stroke-width="5"/>
+</svg>

@@ -2,12 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import BarChart from "./components/BarChart";
+import { useState } from "react";
+
 export default function Home() {
+  const [log, setLog] = useState(false);
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
       <section
         id="presentacion"
-        className="flex flex-col items-center px-6 text-center pt-16 pb-12"
+        className="flex flex-col items-center px-6 text-center pt-16 pb-12 sectionAnimated"
       >
         <Image
           src="/Icono.png"
@@ -17,7 +20,7 @@ export default function Home() {
           className="mb-6 drop-shadow-lg rounded"
         />
 
-        <h1 className="text-4xl md:text-6xl font-bold max-w-4xl leading-tight mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold max-w-4xl leading-tight mb-4 text-shadow-lg/20">
           Guarda tus <span className="text-sky-600">estadísticas</span> de
           lanzamientos de campo con{" "}
           <span className="text-orange-500">PlayStat</span>
@@ -78,18 +81,15 @@ export default function Home() {
             >
               <div className="mb-3 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
                 {/* Ícono simple */}
-                <svg viewBox="0 0 24 24" className="h-5 w-5">
-                  <path
-                    d="M12 2a10 10 0 100 20 10 10 0 000-20Z"
-                    fill="currentColor"
-                    className="text-orange-400"
-                  />
-                  <path
-                    d="M3 12h18M12 2c3 4 3 8 0 12M12 2c-3 4-3 8 0 12"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    fill="none"
-                  />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-crosshair text-orange-500"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8.5.5a.5.5 0 0 0-1 0v.518A7 7 0 0 0 1.018 7.5H.5a.5.5 0 0 0 0 1h.518A7 7 0 0 0 7.5 14.982v.518a.5.5 0 0 0 1 0v-.518A7 7 0 0 0 14.982 8.5h.518a.5.5 0 0 0 0-1h-.518A7 7 0 0 0 8.5 1.018zm-6.48 7A6 6 0 0 1 7.5 2.02v.48a.5.5 0 0 0 1 0v-.48a6 6 0 0 1 5.48 5.48h-.48a.5.5 0 0 0 0 1h.48a6 6 0 0 1-5.48 5.48v-.48a.5.5 0 0 0-1 0v.48A6 6 0 0 1 2.02 8.5h.48a.5.5 0 0 0 0-1zM8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-1">{c.title}</h3>
@@ -104,7 +104,6 @@ export default function Home() {
         <h2 className="text-3xl md:text-4xl font-semibold text-center mb-10">
           Métricas y analíticas
         </h2>
-
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="rounded-2xl bg-white p-6 shadow border border-gray-100">
             <h3 className="text-xl font-semibold mb-2">Precisión & Volumen</h3>
@@ -133,10 +132,18 @@ export default function Home() {
             </ul>
           </div>
         </div>
-
         <div className="mt-8 rounded-2xl border-2 border-dashed border-gray-200 bg-white/50 aspect-video flex items-center justify-center p-4">
           <BarChart />
         </div>
+        {/*
+        
+        <div className="max-w-6xl mx-auto p-6">
+          <CourtInteractive
+            className="w-full h-auto"
+            onChange={(zona) => console.log("Zona seleccionada:", zona)}
+          />
+        </div>
+        */}
       </section>
 
       <hr className="border-t border-gray-200" />

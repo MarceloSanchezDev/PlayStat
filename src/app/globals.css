@@ -28,3 +28,78 @@ body {
 button:hover{
   cursor: pointer;
 }
+
+.hover:hover{
+  background-color: red;
+}
+/* Contenedor con la cancha de fondo y la grilla de overlays */
+.canchaInvisible{
+  position: relative;
+  background-image: url("/CanchaBasquet.svg");
+  background-size: 100%;
+background-position: top;    /* que se vea completa sin recortar */
+  background-repeat: no-repeat;
+  width: 100%;  
+  aspect-ratio: 16 / 9;  
+  /*
+
+  display: grid;
+  grid-template-columns: 12% 25% 26% 25% 12%;
+  grid-template-rows: 25% 35% 21% 19% 
+  */
+
+
+}
+.zone{
+   font-family: var(--font-num), ui-monospace, monospace; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25%;
+}
+.zone:hover{
+  font-family: var(--font-ui), system-ui, sans-serif;
+
+background: #00000025;
+cursor: pointer;
+}
+/*
+
+.eit3{ background-color: rgba(0, 255, 21, 0.247);;}
+.eit2{ background-color: rgba(255, 0, 0, 0.247)}
+.p{ background-color: rgba(0, 255, 21, 0.247);}
+.edt2{ background-color: rgba(255, 0, 0, 0.247);}
+.edt3{ background-color: rgba(255, 0, 0, 0.247);}
+.eit2{ background-color: rgba(255, 0, 0, 0.247);}
+.p45i2{ background-color: rgba(255, 0, 0, 0.247);}
+.p45d2{ background-color: rgba(0, 255, 21, 0.247);}
+.p45d3{ background-color: rgba(255, 0, 0, 0.247);}
+.edt3{ background-color: rgba(255, 0, 0, 0.247);}
+.p45i3{ background-color: rgba(255, 0, 0, 0.247);}
+.mt2L{ background-color: rgba(0, 255, 21, 0.247);}
+.mt2R{ background-color: rgba(255, 0, 0, 0.247);}
+.l{ background-color: rgba(0, 255, 21, 0.247);}
+.p45i3{ background-color: rgba(255, 0, 0, 0.247);}
+.p45d3{ background-color: rgba(255, 0, 0, 0.247);}
+*/
+
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:hover {
+  scale: 1.1;
+}
+@keyframes myAnimation {
+  0%  { opacity: 0;  }
+  100% { opacity: 1;  }
+}
+.sectionAnimated {
+  opacity: 1;
+  animation: myAnimation 0.8s ease forwards;
+}
+
