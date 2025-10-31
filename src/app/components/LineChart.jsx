@@ -71,7 +71,7 @@ const data = {
 
 export default function LineChart() {
   return (
-    <div className="h-full">
+    <div className="chart-container">
       <Line data={data} options={options} />;
     </div>
   );

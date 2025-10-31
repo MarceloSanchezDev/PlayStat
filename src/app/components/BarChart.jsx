@@ -80,7 +80,7 @@ const data = {
 
 export default function BarChart() {
   return (
-    <div className="h-full">
+    <div className="chart-container">
       <Bar data={data} options={options} />;
     </div>
   );
