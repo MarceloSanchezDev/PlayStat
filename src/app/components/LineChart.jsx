@@ -70,5 +70,9 @@ const data = {
 };
 
 export default function LineChart() {
-  return <Line data={data} options={options} />;
+  return (
+    <div className="h-full">
+      <Line data={data} options={options} />;
+    </div>
+  );
 }

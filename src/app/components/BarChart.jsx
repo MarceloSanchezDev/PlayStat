@@ -24,7 +24,6 @@ ChartJS.register(
 // ⚙️ Opciones del gráfico
 const options = {
   responsive: true,
-  maintainAspectRatio: false, // permite que se adapte al contenedor
   plugins: {
     legend: {
       position: "top",
@@ -80,5 +79,9 @@ const data = {
 };
 
 export default function BarChart() {
-  return <Bar data={data} options={options} />;
+  return (
+    <div className="h-full">
+      <Bar data={data} options={options} />;
+    </div>
+  );
 }
