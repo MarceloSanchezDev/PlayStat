@@ -21,8 +21,12 @@ ChartJS.register(
   Legend
 );
 
-// ⚙️ Opciones del gráfico
-const options = {
+
+
+export default function BarChart({numbers}) {
+  // ⚙️ Opciones del gráfico
+function options() {
+  return {
   responsive: true,
   plugins: {
     legend: {
@@ -53,15 +57,19 @@ const options = {
       grid: { color: "rgba(0,0,0,0.05)" },
     },
   },
+
+}
 };
+const dataM  = numbers?.map(num => num + 2);
 
 // 📊 Datos de ejemplo
-const data = {
-  labels: ["Izquierda", "Centro", "Derecha"],
+function data() {
+  return {
+  labels: ["Esquina", "45°",  "Centro", "Derecha"],
   datasets: [
     {
       label: "Tiros acertados",
-      data: [8, 12, 6],
+      data: numbers,
       backgroundColor: "#0084d1",
       borderColor: "rgba(37, 99, 235, 1)",
       borderWidth: 1,
@@ -69,19 +77,19 @@ const data = {
     },
     {
       label: "Tiros fallados",
-      data: [5, 4, 8],
+      data: dataM,
       backgroundColor: "#ff6900",
       borderColor: "rgba(239, 68, 68, 1)",
       borderWidth: 1,
       borderRadius: 8,
     },
   ],
-};
+}
+}
 
-export default function BarChart() {
   return (
     <div className="chart-container">
-      <Bar data={data} options={options} />;
+      <Bar data={data()} options={options()} />
     </div>
   );
 }

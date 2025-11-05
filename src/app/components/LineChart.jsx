@@ -23,8 +23,14 @@ ChartJS.register(
   Legend
 );
 
-// 🔹 Opciones de configuración
-const options = {
+
+
+
+export default function LineChart({numbers}) {
+  // 🔹 Opciones de
+//  configuración
+function options() {
+  return {
   responsive: true,
   plugins: {
     legend: {
@@ -45,14 +51,16 @@ const options = {
     },
   },
 };
-
-// 🔹 Datos del gráfico
-const data = {
+}
+const dataM =  numbers?.map(num => num - 1)
+ function data(){
+  
+  return {
   labels: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
   datasets: [
     {
       label: "Tiros de 2 puntos",
-      data: [60, 65, 70, 68, 75, 72, 78],
+      data: numbers,
       borderColor: "rgba(37, 99, 235, 1)", // azul
       backgroundColor: "rgba(37, 99, 235, 0.2)",
       tension: 0.4, // suaviza la línea
@@ -60,7 +68,7 @@ const data = {
     },
     {
       label: "Tiros de 3 puntos",
-      data: [35, 40, 42, 38, 45, 47, 50],
+      data: dataM,
       borderColor: "rgba(249, 115, 22, 1)", // naranja
       backgroundColor: "rgba(249, 115, 22, 0.2)",
       tension: 0.4,
@@ -68,11 +76,10 @@ const data = {
     },
   ],
 };
-
-export default function LineChart() {
+  }
   return (
     <div className="chart-container">
-      <Line data={data} options={options} />;
+      <Line data={data()} options={options()} />
     </div>
   );
 }

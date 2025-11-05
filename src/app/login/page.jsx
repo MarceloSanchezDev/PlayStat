@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import FormComponent from "../components/form/FormComponent";
 import ButtomForm from "../components/buttom/ButtomForm";
 import TitleFom from "../components/form/components/TitleFom";
@@ -29,6 +29,7 @@ export default function LoginPage() {
         const res = await fetch("/api/auth/check", { method: "GET" });
         // Si 200, ya está autenticado
         if (res.ok) {
+          login()
           const data = await res.json();
           if (alive && data?.authenticated) {
             router.replace("/dashboard");
@@ -89,7 +90,8 @@ export default function LoginPage() {
 
   return (
     <MainComponent>
-      <SectionForm>
+      <Suspense fallback={<div>Cargando...</div>}>
+         <SectionForm>
         <TitleFom title={"Login"} />
         <p className="text-center font-bold">
           Inicia sesión para poder acceder a tus datos
@@ -142,6 +144,8 @@ export default function LoginPage() {
           <Link href="/forgotPassword">Olvide mi contraseña</Link>
         </FormComponent>
       </SectionForm>
+        </Suspense>
+      
       <p className="mt-5">
         Si no tienes una cuenta todavia,
         <Link

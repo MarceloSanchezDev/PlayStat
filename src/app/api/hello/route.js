@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-
+import { testFunction } from "../../lib/test.js";
 export async function GET() {
+  const testMessage = testFunction();
   return NextResponse.json({
-    message: "Hola desde la API 👋",
+    message: testMessage,
     at: new Date().toISOString(),
   });
 }
