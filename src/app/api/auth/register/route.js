@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 export async function POST(req) {
   //lo recibe como un objeto
   const { formdata } = await req.json();
 
+  const salt = bcrypt.genSaltSync(10);
+  const hashPass = bcrypt.hashSync(formdata.password, salt);
+
+  console.log(`usuario : ${formdata.username} `, `pass : ${hashPass} `);
+
   const res = NextResponse.json(
     {
-      message: "Inicio de Sesion Exitoso! 👋",
-      data: formdata,
+      message: "Registro Exitoso! 👋",
       at: new Date().toISOString(),
     },
     { status: 200 }

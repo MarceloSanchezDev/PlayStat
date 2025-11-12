@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 export async function POST(req) {
   //lo recibe como un objeto
   const { formdata } = await req.json();

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/app/context/UserContext";
 const HeaderComponent = () => {
-  const { user, logout } = useUser();
+  const { logout } = useUser();
   const router = useRouter();
   async function HandleLogout() {
     const res = await fetch("/api/auth/logout", { method: "POST" });
@@ -25,11 +25,12 @@ const HeaderComponent = () => {
           </h1>
         </div>
       </Link>
-      {user && (
-        <button onClick={HandleLogout} className="border rounded-sm p-2 mx-2">
-          Cerrar sesión
-        </button>
-      )}
+      <Link href="/dashboard">Dashboard</Link>
+      <Link href="/dashboard/user">Perfil</Link>
+      <Link href="/dashboard/info">Informacion</Link>
+      <button onClick={HandleLogout} className="border rounded-sm p-2 mx-2">
+        Cerrar sesión
+      </button>
     </header>
   );
 };

@@ -21,29 +21,6 @@ export default function LoginPage() {
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Chequeo de sesión por cookie httpOnly vía /api/auth/check
-  useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        const res = await fetch("/api/auth/check", { method: "GET" });
-        // Si 200, ya está autenticado
-        if (res.ok) {
-          login()
-          const data = await res.json();
-          if (alive && data?.authenticated) {
-            router.replace("/dashboard");
-          }
-        }
-      } catch {
-        // silencio: si falla el check no bloqueamos el login
-      }
-    })();
-    return () => {
-      alive = false;
-    };
-  }, [router]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -91,61 +68,61 @@ export default function LoginPage() {
   return (
     <MainComponent>
       <Suspense fallback={<div>Cargando...</div>}>
-         <SectionForm>
-        <TitleFom title={"Login"} />
-        <p className="text-center font-bold">
-          Inicia sesión para poder acceder a tus datos
-        </p>
+        <SectionForm>
+          <TitleFom title={"Login"} />
+          <p className="text-center font-bold">
+            Inicia sesión para poder acceder a tus datos
+          </p>
 
-        <FormComponent
-          className="flex flex-col flex-wrap justify-center content-center gap-4  p-10"
-          handleSubmit={handleSubmit}
-        >
-          <LabelForm htmlFor="username" title={"Nombre de Usuario :"}>
-            <InputForm
-              onChange={(e) =>
-                setFormData({ ...formdata, username: e.target.value })
-              }
-              id="username"
-              type="text"
-              placeholder="nombre de usuario"
-            />
-          </LabelForm>
+          <FormComponent
+            className="flex flex-col flex-wrap justify-center content-center gap-4  p-10"
+            handleSubmit={handleSubmit}
+          >
+            <LabelForm htmlFor="username" title={"Nombre de Usuario :"}>
+              <InputForm
+                onChange={(e) =>
+                  setFormData({ ...formdata, username: e.target.value })
+                }
+                id="username"
+                type="text"
+                placeholder="nombre de usuario"
+              />
+            </LabelForm>
 
-          <LabelForm htmlFor="password" title={"Contraseña :"}>
-            <InputForm
-              onChange={(e) =>
-                setFormData({ ...formdata, password: e.target.value })
-              }
-              id="password"
-              type="password"
-              placeholder="contraseña"
-            />
-          </LabelForm>
+            <LabelForm htmlFor="password" title={"Contraseña :"}>
+              <InputForm
+                onChange={(e) =>
+                  setFormData({ ...formdata, password: e.target.value })
+                }
+                id="password"
+                type="password"
+                placeholder="contraseña"
+              />
+            </LabelForm>
 
-          {error && (
-            <div className="flex justify-center content-center">
-              <span className="w-100 text-center text-red-600 font-bold">
-                {error}
+            {error && (
+              <div className="flex justify-center content-center">
+                <span className="w-100 text-center text-red-600 font-bold">
+                  {error}
+                </span>
+              </div>
+            )}
+
+            {msg && (
+              <span className="transition delay-150 w-100 text-center text-green-600 font-bold">
+                {msg}
               </span>
-            </div>
-          )}
+            )}
+            <fieldset className="flex gap-2">
+              <input type="checkbox" name="record" id="record" />
+              <label htmlFor="record">Recordame</label>
+            </fieldset>
+            <ButtomForm title={"Iniciar Sesion"} loading={loading} />
+            <Link href="/forgotPassword">Olvide mi contraseña</Link>
+          </FormComponent>
+        </SectionForm>
+      </Suspense>
 
-          {msg && (
-            <span className="transition delay-150 w-100 text-center text-green-600 font-bold">
-              {msg}
-            </span>
-          )}
-          <fieldset className="flex gap-2">
-            <input type="checkbox" name="record" id="record" />
-            <label htmlFor="record">Recordame</label>
-          </fieldset>
-          <ButtomForm title={"Iniciar Sesion"} loading={loading} />
-          <Link href="/forgotPassword">Olvide mi contraseña</Link>
-        </FormComponent>
-      </SectionForm>
-        </Suspense>
-      
       <p className="mt-5">
         Si no tienes una cuenta todavia,
         <Link

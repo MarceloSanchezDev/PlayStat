@@ -6,7 +6,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import HeaderComponent from "./components/Header/HeaderComponent";
+import HeaderComponent from "./components/Header/HeaderDashboard/HeaderDashboard";
 import { UserProvider } from "./context/UserContext";
 
 const geistSans = Geist({
@@ -40,7 +40,6 @@ export default function RootLayout({ children }) {
         className={` ${sourceSans.variable} ${robotoMono.variable}  ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <UserProvider>
-          <HeaderComponent />
           {children}
           <footer className="border-t py-6 mt-auto">
             <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-sm ">

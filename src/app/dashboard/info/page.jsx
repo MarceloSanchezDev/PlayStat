@@ -1,7 +1,18 @@
-export default function Info() {
+import { createClient } from "../../lib/db";
+import { cookies } from "next/headers";
+
+export default async function Page() {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
+  const { data: todos } = await supabase.from("todos").select();
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <h1>Marelo Sanchez Info</h1>
-    </div>
+    <ul>
+      jp
+      {todos?.map((todo) => (
+        <li>{todo}</li>
+      ))}
+    </ul>
   );
 }
